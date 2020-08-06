@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  {% block head %}
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
+
+  <link rel="stylesheet" href="../static/css/navbarcss.css">
+  <link rel="stylesheet" href="../static/css/contentcss.css">
+  {% endblock %}
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-mainbg">
+    <img class="navbar-brand navbar-logo" src="../static/img/svg/logos/Faipe@1x.svg" width="145">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars text-white"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <div class="hori-selector">
+          <div class="left"></div>
+          <div class="right"></div>
+        </div>
+        {% set navbar_menus = [
+          ('str-s','inicio','fas fa-home', 'Inicio'),
+          ('new-s','buscar','fas fa-plus-circle','Nueva busqueda'),
+          ('rec-s','recientes','fas fa-history', 'Recientes'),
+          ('pop-s','populares','fas fa-fire', 'Populares'),
+          ('ldc-s','lista','far fa-list-alt', 'Lista'),
+        ]-%}
+
+        {% set active_page = active_page|default('inicio') -%}
+
+        {% for tagged,id, icon ,caption in navbar_menus %}
+
+          <li id="{{tagged}}" class="nav-item {% if id == active_page %} active {% endif%}">
+            <a class="nav-link" href="javascript:void(0)"><i class="{{ icon }}"></i>{{ caption }}</a>
+          </li>
+
+        {% endfor %}
+      </ul>
+    </div>
+  </nav>
+
+  <div id="app" class="container">
+
+    {% block content %}
+
+    {% endblock%}
+
+  </div>
+
+
+  <!--Script time!!!!-->
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+  <script src="../static/js/tabed.js"></script>
+  <script src="../static/js/navbarjs.js"></script>
+  <!--Script time end!!!-->
+
+</body>
+
+</html>

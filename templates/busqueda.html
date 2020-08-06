@@ -1,0 +1,43 @@
+{% set active_page = "buscar" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div id="bsq-d" class="px-2 pt-4 pb-2">
+        <center>
+            <h4 id="ttl-s" class="mb-3">Buscar por</h4>
+        </center>
+        <ul class="nav nav-tabs nav-fill frs">
+            <li class="nav-item">
+                <a id="ing" class="nav-link text-light active text-dark" href="javascript:void(0);">Ingredientes</a>
+            </li>
+            <li class="nav-item">
+                <a id="nre" class="nav-link text-light" href="javascript:void(0);">Nombre de receta</a>
+            </li>
+        </ul>
+        <div id="bsq-i" class="py-4">
+
+        </div>
+    </div>
+    <div id="res-d" class="my-5 px-2 py-4">
+        <center>
+            <h4 id="ttl-s" class="mb-3">Resultados</h4>
+        </center>
+        <div id="visor">
+            
+            {% block destroy %}
+                <div id="todestroy">
+                    <ul class="list-group">
+                        <li class="alert alert-warning">Aun no hay busqueda</li>
+                    </ul>
+                </div>
+            {% endblock %}
+                
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+<script src="../static/js/funcbusqueda.js"></script>
+{% endblock content %}
